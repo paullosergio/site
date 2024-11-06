@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glitz & Gloss Nails - Estratégia de Marca</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&display=swap');
+
+    :root {
+      --primary: #0A3B3B;
+      --secondary: #8BA8E5;
+      --tertiary: #D6D1C4;
+      --white: #FFFFFF;
+    }
+
+    body {
+      font-family: 'Work Sans', sans-serif;
+      background-color: var(--white);
+      color: var(--primary);
+    }
+
+    .main-section {
+      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .main-section.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sub-section {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+
+    .sub-section.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .main-nav-btn {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      color: var(--primary);
+    }
+
+    .main-nav-btn::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--secondary);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .main-nav-btn:hover {
+      color: var(--secondary);
+    }
+
+    .main-nav-btn:hover::after {
+      transform: scaleX(1);
+    }
+
+    .main-nav-btn.active {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .sub-nav-btn {
+      position: relative;
+      transition: all 0.3s ease;
+      color: var(--primary);
+      opacity: 0.7;
+    }
+
+    .sub-nav-btn:hover {
+      opacity: 1;
+      color: var(--secondary);
+    }
+
+    .sub-nav-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: var(--secondary);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .sub-nav-btn:hover::after {
+      transform: scaleX(1);
+    }
+
+    .sub-nav-btn.active {
+      opacity: 1;
+      font-weight: 500;
+    }
+
+    .sub-nav-btn.active::after {
+      transform: scaleX(1);
+      background-color: var(--primary);
+    }
+
+    .content-card {
+      background-color: var(--white);
+      border: 1px solid rgba(10, 59, 59, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .content-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(10, 59, 59, 0.05);
+    }
+
+    .list-item {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .list-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: var(--secondary);
+      transform: translateY(-50%);
+    }
+
+    @media (max-width: 768px) {
+      .main-nav-btn {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .sub-nav-btn {
+        padding: 0.75rem 1rem;
+      }
+
+      .content-card {
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <!-- Header -->
+    <header class="text-center mb-16">
+      <h1 class="text-5xl font-light mb-4 tracking-wider">GLITZ & GLOSS NAILS</h1>
+      <p class="text-lg font-light tracking-wide text-gray-600">Estratégia de Marca</p>
+    </header>
+
+    <!-- Main Navigation -->
+    <nav class="flex flex-wrap justify-center gap-4 mb-16">
+      <button onclick="showMainSection('positioning')" class="main-nav-btn px-8 py-3 border border-primary active">
+        Posicionamento
+      </button>
+      <button onclick="showMainSection('personality')" class="main-nav-btn px-8 py-3 border border-primary">
+        Personalidade
+      </button>
+      <button onclick="showMainSection('essence')" class="main-nav-btn px-8 py-3 border border-primary">
+        Essência
+      </button>
+    </nav>
+
+    <!-- Content Container -->
+    <div class="bg-white rounded-lg shadow-sm p-8">
+      <!-- Posicionamento Section -->
+      <section id="positioning" class="main-section active">
+        <nav class="flex flex-wrap border-b border-gray-200 mb-12">
+          <button onclick="showSubSection('pos-overview')" class="sub-nav-btn px-6 py-4 active">
+            Visão Geral
+          </button>
+          <button onclick="showSubSection('pos-differentials')" class="sub-nav-btn px-6 py-4">
+            Diferenciais
+          </button>
+          <button onclick="showSubSection('pos-advantages')" class="sub-nav-btn px-6 py-4">
+            Vantagens
+          </button>
+          <button onclick="showSubSection('pos-implementation')" class="sub-nav-btn px-6 py-4">
+            Implementação
+          </button>
+        </nav>
+
+        <!-- Visão Geral -->
+        <div id="pos-overview" class="sub-section active space-y-8">
+          <div class="content-card p-8 rounded-lg">
+            <h3 class="text-2xl font-light mb-6">Declaração de Posicionamento</h3>
+            <p class="text-gray-700 leading-relaxed">
+              Para mulheres que valorizam a sofisticação e buscam mais do que um simples serviço de beleza,
+              a Glitz & Gloss Nails é um estúdio premium de nail design que oferece experiências e resultados
+              extraordinários,
+              combinando técnica apurada, atendimento personalizado e ambiente acolhedor.
+            </p>
+          </div>
+
+          <div class="content-card p-8 rounded-lg">
+            <h3 class="text-2xl font-light mb-6">Público-Alvo</h3>
+            <ul class="space-y-3">
+              <li class="list-item">Mulheres que valorizam qualidade e sofisticação</li>
+              <li class="list-item">Buscadoras de experiências em serviços de beleza</li>
+              <li class="list-item">Clientes que apreciam atendimento personalizado e resultados superiores</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Diferenciais -->
+        <div id="pos-differentials" class="sub-section space-y-8">
+          <div class="content-card p-8 rounded-lg">
+            <h3 class="text-2xl font-light mb-6">Expertise Técnica Superior</h3>
+            <ul class="space-y-3">
+              <li class="list-item">Domínio de técnicas avançadas em nail design</li>
+              <li class="list-item">Portfólio diversificado incluindo fibra de vidro, acrílico, esmaltação em gel</li>
+              <li class="list-item">Constante atualização em tendências e inovações</li>
+              <li class="list-item">Compromisso com a excelência em cada detalhe</li>
+            </ul>
+          </div>
+
+          <div class="content-card p-8 rounded-lg">
+            <h3 class="text-2xl font-light mb-6">Experiência Premium Personalizada</h3>
+            <ul class="space-y-3">
+              <li class="list-item">Ambiente que combina elegância e acolhimento</li>
+              <li class="list-item">Atendimento individualizado e focado nas necessidades específicas</li>
+              <li class="list-item">Protocolos de serviço que priorizam o conforto e bem-estar</li>
+              <li class="list-item">Uso exclusivo de produtos premium</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Vantagens -->
+        <div id="pos-advantages" class="sub-section space-y-8">
+          <div class="content-card p-8 rounded-lg">
+            <h3 class="text-2xl font-light mb-6">Vantagens Competitivas</h3>
+            <ul class="space-y-3">
+              <li class="list-item">Expertise técnica</li>
+              <li class="list-item">Experiência personalizada</li>
+              <li class="list-item">Ambiente sofisticado e acolhedor</li>
+              <li class="list-item">Foco em transformação e empoderamento</li>
+            </ul>
+          </div>
+
+          <div class="content-card p-8 rounded-lg">
+            <h3 class="text-2xl font-light mb-6">Oportunidades de Mercado</h3>
+            <ul class="space-y-3">
+              <li class="list-item">Crescente busca por experiências</li>
+              <li class="list-item">Valorização do autocuidado e bem-estar</li>
+              <li class="list-item">Demanda por serviços personalizados</li>
+              <li class="list-item">Conexão emocional com a marca</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Implementação -->
+        <div id="pos-implementation" class="sub-section space-y-8">
+          <div class="content-card p-8 rounded-lg">
+            <h3 class="text-2xl font-light mb-6">Prioridades</h3>
+            <ul class="space-y-3">
+              <li class="list-item">Manter consistência na entrega da experiência</li>
+              <li class="list-item">Investir em constante atualização técnica</li>
+              <li class="list-item">Fortalecer relacionamento com clientes</li>
+              <li class="list-item">Desenvolver presença digital autêntica</li>
+            </ul>
+          </div>
+
+          <div class="content-card p-8 rounded-lg">
+            <h3 class="text-2xl font-light mb-6">Métricas de Sucesso</h3>
+            <ul class="space-y-3">
+              <li class="list-item">Satisfação e fidelização de clientes</li>
+              <li class="list-item">Reconhecimento da marca no mercado</li>
+              <li class="list-item">Crescimento sustentável do negócio</li>
+              <li class="list-item">Engajamento nas redes sociais</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Personalidade Section -->
+      <section id="personality" class="main-section">
+        <nav class="flex flex-wrap border-b border-gray-200 mb-12">
+          <button onclick="showSubSection('pers-archetype')" class="sub-nav-btn px-6 py-4 active">
+            Arquétipo Principal
+          </button>
+          <button onclick="showSubSection('pers-support')" class="sub-nav-btn px-6 py-4">
+            Arquétipo de Suporte
+          </button>
+          <button onclick="showSubSection('pers-synergy')" class="sub-nav-btn px-6 py-4">
+            Sinergia
+          </button>
+          <button onclick="showSubSection('pers-implementation')" class="sub-nav-btn px-6 py-4">
+            Diretrizes
+          </button>
+        </nav>
+        <!-- Arquétipo Principal -->
+        <div id="pers-archetype" class="sub-section active space-y-8">
+          <div class="content-card p-8 rounded-lg">
+            <h3 class="text-2xl font-light mb-6">O Amante</h3>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              Nossa marca manifesta-se através do desejo de criar beleza e experiências,
+              com compromisso em valorizar a autoestima e buscar a excelência estética.
+            </p>
+            <div>
+              <h4 class="text-xl font-light mb-4">Características Principais</h4>
+              <ul class="space-y-3">
+                <li class="list-item">Valoriza a beleza em todas as suas formas</li>
+                <li class="list-item">Foco em conexões emocionais e relacionamentos</li>
+                <li class="list-item">Busca criar experiências sensoriais prazerosas</li>
+                <li class="list-item">Prioriza qualidade e sofisticação</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="content-card p-8 rounded-lg">
+            <h4 class="text-xl font-light mb-6">Manifestação na Marca</h4>
+            <div class="grid md:grid-cols-3 gap-8">
+              <div>
+                <h5 class="font-medium mb-3">No Atendimento</h5>
+                <ul class="space-y-3">
+                  <li class="list-item">Criação de vínculos emocionais</li>
+                  <li class="list-item">Atenção personalizada</li>
+                  <li class="list-item">Ambiente acolhedor</li>
+                  <li class="list-item">Experiência sensorial</li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-medium mb-3">Na Comunicação</h5>
+                <ul class="space-y-3">
+                  <li class="list-item">Tom de voz acolhedor</li>
+                  <li class="list-item">Valorização da beleza</li>
+                  <li class="list-item">Foco em transformação</li>
+                  <li class="list-item">Linguagem exclusiva</li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-medium mb-3">No Design</h5>
+                <ul class="space-y-3">
+                  <li class="list-item">Elementos sofisticados</li>
+                  <li class="list-item">Paleta elegante</li>
+                  <li class="list-item">Acabamentos refinados</li>
+                  <li class="list-item">Atenção aos detalhes</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arquétipo de Suporte -->
+        <div id="pers-support" class="sub-section space-y-8">
+          <div class="content-card p-8 rounded-lg">
+            <h3 class="text-2xl font-light mb-6">O Mago</h3>
+            <div>
+              <h4 class="text-xl font-light mb-4">Características Principais</h4>
+              <ul class="space-y-3">
+                <li class="list-item">Capacidade de transformação</li>
+                <li class="list-item">Domínio técnico e expertise</li>
+                <li class="list-item">Visão inspiradora e transformadora</li>
+                <li class="list-item">Busca pela perfeição</li>
+                <li class="list-item">Poder de realizar sonhos</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="content-card p-8 rounded-lg">
+            <h4 class="text-xl font-light mb-6">Manifestação na Marca</h4>
+            <div class="grid md:grid-cols-3 gap-8">
+              <div>
+                <h5 class="font-medium mb-3">Nos Serviços</h5>
+                <ul class="space-y-3">
+                  <li class="list-item">Expertise técnica superior</li>
+                  <li class="list-item">Transformação visível</li>
+                  <li class="list-item">Inovação constante</li>
+                  <li class="list-item">Resultados extraordinários</li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-medium mb-3">Na Experiência</h5>
+                <ul class="space-y-3">
+                  <li class="list-item">Transformação memorável</li>
+                  <li class="list-item">Atmosfera inspiradora</li>
+                  <li class="list-item">Sensação de exclusividade</li>
+                  <li class="list-item">Resultados mágicos</li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-medium mb-3">No Posicionamento</h5>
+                <ul class="space-y-3">
+                  <li class="list-item">Promessa transformadora</li>
+                  <li class="list-item">Domínio técnico</li>
+                  <li class="list-item">Busca por inovação</li>
+                  <li class="list-item">Realização de desejos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sinergia -->
+        <div id="pers-synergy" class="sub-section space-y-8">
+          <div class="content-card p-8 rounded-lg">
+            <h3 class="text-2xl font-light mb-6">Complementaridade dos Arquétipos</h3>
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 class="text-xl font-light mb-4">O Amante traz</h4>
+                <ul class="space-y-3">
+                  <li class="list-item">Conexão emocional</li>
+                  <li class="list-item">Foco na experiência</li>
+                  <li class="list-item">Valorização da beleza</li>
+                  <li class="list-item">Relacionamentos duradouros</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-xl font-light mb-4">O Mago adiciona</h4>
+                <ul class="space-y-3">
+                  <li class="list-item">Expertise técnica</li>
+                  <li class="list-item">Poder de transformação</li>
+                  <li class="list-item">Inovação constante</li>
+                  <li class="list-item">Resultados extraordinários</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diretrizes -->
+        <div id="pers-implementation" class="sub-section space-y-8">
+          <div class="content-card p-8 rounded-lg">
+            <h3 class="text-2xl font-light mb-6">Diretrizes de Implementação</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+              <div>
+                <h4 class="font-medium mb-3">Na Comunicação</h4>
+                <ul class="space-y-3">
+                  <li class="list-item">Linguagem emocional e técnica</li>
+                  <li class="list-item">Conteúdo inspirador</li>
+                  <li class="list-item">Tom sofisticado e acolhedor</li>
+                  <li class="list-item">Demonstração de resultados</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium mb-3">No Atendimento</h4>
+                <ul class="space-y-3">
+                  <li class="list-item">Treinamento técnico-emocional</li>
+                  <li class="list-item">Protocolos de excelência</li>
+                  <li class="list-item">Experiências memoráveis</li>
+                  <li class="list-item">Foco em relacionamentos</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium mb-3">No Ambiente</h4>
+                <ul class="space-y-3">
+                  <li class="list-item">Design sofisticado</li>
+                  <li class="list-item">Atmosfera transformadora</li>
+                  <li class="list-item">Detalhes cuidadosos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Essence Section -->
+      <section id="essence" class="main-section">
+        <nav class="flex flex-wrap border-b border-gray-200 mb-12">
+          <button onclick="showSubSection('ess-mission')" class="sub-nav-btn px-6 py-4 active">
+            Missão & Visão
+          </button>
+          <button onclick="showSubSection('ess-values')" class="sub-nav-btn px-6 py-4">
+            Valores
+          </button>
+          <button onclick="showSubSection('ess-promise')" class="sub-nav-btn px-6 py-4">
+            Promessa
+          </button>
+        </nav>
+
+        <!-- Missão & Visão -->
+        <div id="ess-mission" class="sub-section active space-y-8">
+          <div class="content-card p-8 rounded-lg">
+            <h3 class="text-2xl font-light mb-6">Missão</h3>
+            <p class="text-gray-700 leading-relaxed">
+              Proporcionar experiências de beleza através de serviços de nail design exclusivos
+              e de alta qualidade, contribuindo para o empoderamento e autoestima de nossos clientes.
+            </p>
+          </div>
+
+          <div class="content-card p-8 rounded-lg">
+            <h3 class="text-2xl font-light mb-6">Visão</h3>
+            <p class="text-gray-700 leading-relaxed">
+              Ser reconhecida como referência em nail design, destacando-se pela excelência técnica,
+              inovação em serviços e capacidade de criar experiências memoráveis.
+            </p>
+          </div>
+        </div>
+
+        <!-- Valores -->
+        <div id="ess-values" class="sub-section space-y-8">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="content-card p-8 rounded-lg">
+              <h3 class="text-2xl font-light mb-6">Valores Fundamentais</h3>
+              <ul class="space-y-3">
+                <li class="list-item">Excelência Técnica</li>
+                <li class="list-item">Inovação Constante</li>
+                <li class="list-item">Empoderamento</li>
+                <li class="list-item">Sofisticação</li>
+              </ul>
+            </div>
+            <div class="content-card p-8 rounded-lg">
+              <h3 class="text-2xl font-light mb-6">Valores Complementares</h3>
+              <ul class="space-y-3">
+                <li class="list-item">Ética e Transparência</li>
+                <li class="list-item">Personalização</li>
+                <li class="list-item">Compromisso com Resultados</li>
+                <li class="list-item">Responsabilidade</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Promessa -->
+        <div id="ess-promise" class="sub-section space-y-8">
+          <div class="content-card p-8 rounded-lg">
+            <h3 class="text-2xl font-light mb-6">Promessa da Marca</h3>
+            <p class="text-gray-700 leading-relaxed">
+              Entregar não apenas serviços de nail design, mas experiências transformadoras
+              que realcem a beleza e elevem a autoestima de nossos clientes, combinando técnica,
+              sofisticação e cuidado em cada detalhe.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    function showMainSection(sectionId) {
+      document.querySelectorAll('.main-section').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          section.classList.remove('active');
+        }, 300);
+      });
+
+      setTimeout(() => {
+        const selectedSection = document.getElementById(sectionId);
+        selectedSection.classList.add('active');
+        setTimeout(() => {
+          selectedSection.style.opacity = '1';
+          selectedSection.style.transform = 'translateY(0)';
+        }, 50);
+      }, 300);
+
+      document.querySelectorAll('.main-nav-btn').forEach(button => {
+        button.classList.remove('active');
+      });
+      event.target.classList.add('active');
+
+      const firstSubNav = document.querySelector(`#${sectionId} .sub-nav-btn`);
+      if (firstSubNav) {
+        firstSubNav.click();
+      }
+    }
+
+    function showSubSection(sectionId) {
+      document.querySelectorAll('.sub-section').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(10px)';
+        setTimeout(() => {
+          section.classList.remove('active');
+        }, 300);
+      });
+
+      setTimeout(() => {
+        const selectedSection = document.getElementById(sectionId);
+        selectedSection.classList.add('active');
+        setTimeout(() => {
+          selectedSection.style.opacity = '1';
+          selectedSection.style.transform = 'translateY(0)';
+        }, 50);
+      }, 300);
+
+      document.querySelectorAll('.sub-nav-btn').forEach(button => {
+        button.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+
+</html>
